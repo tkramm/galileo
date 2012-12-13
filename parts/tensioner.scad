@@ -43,8 +43,8 @@ module tensioner_bearing(){
 				// B	earing Cutout
 				translate([0,0,0])cube([bearing_holder_depth,bearing_holder_width,30],center=true);
 			}
-			translate([(bearing_holder_depth/2),0,0]) rotate([0,-90,0]) cylinder(1,7,6);
-			translate([-(bearing_holder_depth/2),0,0]) rotate([0,90,0]) cylinder(1,7,6);
+			translate([(bearing_holder_depth/2+0.01),0,0]) rotate([0,-90,0]) cylinder(1,7,6,$fn=60);
+			translate([-(bearing_holder_depth/2+0.01),0,0]) rotate([0,90,0]) cylinder(1,7,6,$fn=60);
 		}
 		rotate([0,90,0]) cylinder(r=4,h=bearing_holder_depth+10,$fn=50,center=true);
 		translate([0,(screw_spacing/2),-(bearing_holder_height/2)-0.01]) cylinder(r=m3_nut_radius,h=2.5,$fn=6);
