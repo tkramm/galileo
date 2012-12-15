@@ -70,4 +70,3 @@ module beam_2040(h=10,clearance = 0){
 	}
 }
 
-//beam_2040(h=50);

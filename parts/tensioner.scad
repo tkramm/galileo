@@ -3,17 +3,17 @@ include <../components/M4x60_hex.scad>
 include <../components/bearing_608.scad>
 include <configuration.scad>
 
-screw_spacing = 36;
+screw_spacing = 40;
 bearing_holder_height = 16;
-bearing_holder_width = 28;
-bearing_holder_depth = 9;
+bearing_holder_width = 30;
+bearing_holder_depth = 8;
 
 module tensioner_mount(){
 	difference(){
-		union(){
-			translate([0,0,2])cube([28,screw_spacing,24],center=true);
-			translate([0,(screw_spacing/2),-10]) cylinder(r=5,h=24,$fn=30);
-			translate([0,-(screw_spacing/2),-10]) cylinder(r=5,h=24,$fn=30);
+		hull(){
+			translate([0,0,2])cube([bearing_holder_depth+6,screw_spacing,24],center=true);
+			translate([0,(screw_spacing/2),-10]) cylinder(r=7,h=24,$fn=30);
+			translate([0,-(screw_spacing/2),-10]) cylinder(r=7,h=24,$fn=30);
 		}
 		// Screw Cutouts
 		translate([0,(screw_spacing/2),14.01]) m4x60_hex();
@@ -31,10 +31,10 @@ module tensioner_bearing(){
 	difference(){
 		union(){
 			difference(){
-				union(){
+				hull(){
 					cube([bearing_holder_depth+6,screw_spacing,bearing_holder_height],center=true);
-					translate([0,(screw_spacing/2),0]) cylinder(r=5,h=bearing_holder_height,$fn=30,center=true);
-					translate([0,-(screw_spacing/2),0]) cylinder(r=5,h=bearing_holder_height,$fn=30,center=true);
+					translate([0,(screw_spacing/2),0]) cylinder(r=7,h=bearing_holder_height,$fn=100,center=true);
+					translate([0,-(screw_spacing/2),0]) cylinder(r=7,h=bearing_holder_height,$fn=100,center=true);
 				}
 				// Screw Cutouts
 				translate([0,(screw_spacing/2),14.01]) m4x60_hex();
@@ -43,12 +43,12 @@ module tensioner_bearing(){
 				// B	earing Cutout
 				translate([0,0,0])cube([bearing_holder_depth,bearing_holder_width,30],center=true);
 			}
-			translate([(bearing_holder_depth/2+0.01),0,0]) rotate([0,-90,0]) cylinder(1,7,6,$fn=60);
-			translate([-(bearing_holder_depth/2+0.01),0,0]) rotate([0,90,0]) cylinder(1,7,6,$fn=60);
+			translate([(bearing_holder_depth/2+0.01),0,0]) rotate([0,-90,0]) cylinder(0.5,7,6,$fn=60);
+			translate([-(bearing_holder_depth/2+0.01),0,0]) rotate([0,90,0]) cylinder(0.5,7,6,$fn=60);
 		}
 		rotate([0,90,0]) cylinder(r=4,h=bearing_holder_depth+10,$fn=50,center=true);
-		translate([0,(screw_spacing/2),-(bearing_holder_height/2)-0.01]) cylinder(r=m3_nut_radius,h=2.5,$fn=6);
-		translate([0,-(screw_spacing/2),-(bearing_holder_height/2)-0.01]) cylinder(r=m3_nut_radius,h=2.5,$fn=6);
+		translate([0,(screw_spacing/2),-(bearing_holder_height/2)-0.01]) cylinder(r=m4_nut_radius,h=2.5,$fn=6);
+		translate([0,-(screw_spacing/2),-(bearing_holder_height/2)-0.01]) cylinder(r=m4_nut_radius,h=2.5,$fn=6);
 	}
 }
 
