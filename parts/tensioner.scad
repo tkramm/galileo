@@ -12,8 +12,8 @@ module tensioner_mount(){
 	difference(){
 		hull(){
 			translate([0,0,2])cube([bearing_holder_depth+6,screw_spacing,24],center=true);
-			translate([0,(screw_spacing/2),-10]) cylinder(r=7,h=24,$fn=30);
-			translate([0,-(screw_spacing/2),-10]) cylinder(r=7,h=24,$fn=30);
+			translate([0,(screw_spacing/2),-10]) cylinder(r=7,h=24,$fn=40);
+			translate([0,-(screw_spacing/2),-10]) cylinder(r=7,h=24,$fn=40);
 		}
 		// Screw Cutouts
 		translate([0,(screw_spacing/2),14.01]) m4x60_hex();
@@ -33,8 +33,8 @@ module tensioner_bearing(){
 			difference(){
 				hull(){
 					cube([bearing_holder_depth+6,screw_spacing,bearing_holder_height],center=true);
-					translate([0,(screw_spacing/2),0]) cylinder(r=7,h=bearing_holder_height,$fn=100,center=true);
-					translate([0,-(screw_spacing/2),0]) cylinder(r=7,h=bearing_holder_height,$fn=100,center=true);
+					translate([0,(screw_spacing/2),0]) cylinder(r=7,h=bearing_holder_height,$fn=40,center=true);
+					translate([0,-(screw_spacing/2),0]) cylinder(r=7,h=bearing_holder_height,$fn=40,center=true);
 				}
 				// Screw Cutouts
 				translate([0,(screw_spacing/2),14.01]) m4x60_hex();
@@ -65,6 +65,6 @@ module tensioner_w_bar(color="Red"){
 	tensioner(color=color);
 	color("Silver") rotate([0,90,0]) beam(h=100);
 }
-tensioner_w_bar();
+//tensioner_w_bar();
 
-//rotate([180,0,0]) tensioner_mount();
+rotate([180,0,0]) tensioner_bearing();
