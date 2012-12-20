@@ -5,7 +5,7 @@ bearing_height = 30;
 screw_hole = 8.1;
 
 
-effector_mount_width=37.2;
+effector_mount_width=48;
 
 // back side of the carriage
 module carriage_back(){
@@ -69,8 +69,8 @@ union(){
 
 			// baseplate
 			hull(){
-				translate([spacing/2,4,0]) cylinder(5,7,7,$fn=40);
-				translate([spacing/2,-4,0]) cylinder(5,7,7,$fn=40);
+				translate([spacing/2,8,0]) cylinder(5,7,7,$fn=40);
+				translate([spacing/2,-8,0]) cylinder(5,7,7,$fn=40);
 				translate([-spacing/2,(bearing_height),0]) cylinder(5,7,7,$fn=40);
 				translate([-spacing/2,-(bearing_height),0]) cylinder(5,7,7,$fn=40);
 			}
@@ -83,7 +83,7 @@ union(){
 				translate([0,8,11]) rotate([0,90,0])translate([0,0,-(effector_mount_width-18)/2]) cylinder(effector_mount_width-18,6,6);
 			}
 
-			// enstop screw mont
+			// enstop screw mount
 			translate([-3,30.83,5]) rotate([90,0,0]) cylinder(15,3,3,$fn=40);
 			translate([-6,15.83,0]) cube([6,15,5]);
 
@@ -93,13 +93,13 @@ union(){
 		translate([-3,32,5]) rotate([90,0,0]) cylinder(15,m3_open_radius,m3_open_radius,$fn=40);
 
 
-		translate([5,15,-15]) cylinder(30,m3_open_radius,m3_open_radius,$fn=40);
-		translate([5,0,-15]) cylinder(30,m3_open_radius,m3_open_radius,$fn=40);
+		translate([11,15,-15]) cylinder(30,m3_open_radius,m3_open_radius,$fn=40);
+		translate([11,0,-15]) cylinder(30,m3_open_radius,m3_open_radius,$fn=40);
 
 		//effector mount center cutout
 		translate([0,8,11]) cube([effector_mount_width-18,14,12],center=true);
 		
-		// effector mount screw and nut yutout
+		// effector mount screw and nut cutout
 		translate([0,8,11]) rotate([0,90,0])translate([0,0,-(effector_mount_width+2)/2]) cylinder(effector_mount_width+2,m3_open_radius,m3_open_radius,$fn=10);
 		translate([0,8,11]) rotate([0,90,0]) cylinder(r=m3_nut_radius, h=effector_mount_width-12, center=true, $fn=6);
 
@@ -113,13 +113,13 @@ union(){
 	difference(){
 		// belt / fishing line screw mount
 		union(){
-			translate([5,15,5]) cylinder(3,4,3,$fn=40);
-			translate([5,0,5]) cylinder(3,4,3,$fn=40);
+			translate([11,15,5]) cylinder(3,4,3,$fn=40);
+			translate([11,0,5]) cylinder(3,4,3,$fn=40);
 		}
 
 		// screw cutouts
-		translate([5,15,-15]) cylinder(30,m3_open_radius,m3_open_radius,$fn=40);
-		translate([5,0,-15]) cylinder(30,m3_open_radius,m3_open_radius,$fn=40);
+		translate([11,15,-15]) cylinder(30,m3_open_radius,m3_open_radius,$fn=40);
+		translate([11,0,-15]) cylinder(30,m3_open_radius,m3_open_radius,$fn=40);
 	}
 }
 }
