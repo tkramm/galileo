@@ -12,98 +12,78 @@ block_h = 22;
 module block(){
 	difference(){
 		union(){
+				translate([-19,27,6]) rotate([0,90,0]) cube([12,12,4],center=true);
+				translate([-19,-37,6]) rotate([0,90,0]) cube([12,12,4],center=true);
 			hull(){
-				translate([-19,28,7]) rotate([0,90,0]) cube([14,14,4],center=true);
-				translate([-19,-28,7]) rotate([0,90,0]) cube([14,14,4],center=true);
+				translate([6.5,-11,gear_h+2]) rotate([90,0,0]) cylinder(h=20,r=16/2,$fn=50);
+				translate([0,-21,6]) cube([22,20,12],center=true);
 			}
+
 			hull(){
-				translate([-5,16,block_h/2]) cube([31,10,block_h],center=true);
-				translate([-6,-16,block_h/2]) cube([30,10,block_h],center=true);
+				translate([6.5,11,gear_h+2]) rotate([-90,0,0]) cylinder(h=10,r=4.5,$fn=50);
+				translate([2,16,block_h/2-(block_h/4)]) cube([17,10,block_h/2],center=true);
+				translate([0,16,6]) cube([22,10,12],center=true);
 			}
-			hull(){
-				translate([-6,-17,block_h/2]) cube([30,8,block_h],center=true);
-				translate([15.5,-15.5,block_h/2]) cylinder(r=4.8,h=block_h,center=true,$fn=100);
-			}
+
+			translate([-10.5,-5,6]) cube([21,52,12],center=true);
 		}
 		block_cutout();
 	}
 }
 
 module block_cutout(){
-		// beam mount screws cutout
-		translate([-19,28,7]) rotate([0,90,0]) cylinder(r=m4_open_radius,h=10,center=true,$fn=100);
-		translate([-19,-28,7]) rotate([0,90,0]) cylinder(r=m4_open_radius,h=10,center=true,$fn=100);
 
-		// plasic saver
-//		hull(){
-//			translate([-15.5,9,-50]) cylinder(r=3,h=100,$fn=50);
-//			translate([-15.5,-9,-50]) cylinder(r=3,h=100,$fn=50);
-//		}
-//		difference(){
-//			translate([-5,-13,0]) cube([10,10,100],center=true);
-//			cylinder(h=100,r=13,center=true,$fn=100);
-//		}
-		hull(){
-			translate([-48,-20,block_h]) cube([42,42,10]);
-			translate([-21.1,-22,block_h-8]) cube([10,44,10]);
-		}
-			translate([-13,-23,block_h-8]) rotate([0,-20,0]) cube([44,30,10]);
-		
+		// beam mount screws cutout
+		translate([-21,27,6]) rotate([0,90,0]) cylinder(r=m4_open_radius,h=10,center=true,$fn=100);
+		translate([-21,-37,6]) rotate([0,90,0]) cylinder(r=m4_open_radius,h=10,center=true,$fn=100);
 
 		// Mount screw cutouts
-		translate([15.5,15.5,block_h/2]) cylinder(r=m3_open_radius,h=100,center=true,$fn=20);
-		translate([15.5,-15.5,block_h/2]) cylinder(r=m3_open_radius,h=100,center=true,$fn=40);
 		translate([-15.5,15.5,block_h/2]) cylinder(r=m3_open_radius,h=100,center=true,$fn=40);
 		translate([-15.5,-15.5,block_h/2]) cylinder(r=m3_open_radius,h=100,center=true,$fn=40);
 
-		translate([-15.5,15.5,9]) cylinder(r=3,h=100,$fn=50);
-		translate([-15.5,-15.5,9]) cylinder(r=3,h=100,$fn=50);
+		// Screw head cutout
+		translate([-15.5,15.5,6]) cylinder(r=3,h=100,$fn=40);
+		translate([-15.5,-15.5,6]) cylinder(r=3,h=100,$fn=40);
 
-		translate([15.5,-15.5,block_h/2+block_h/4]) cylinder(r=4.1,h=block_h/2+0.2,$fn=100,center=true);
-		translate([18,-15.5,block_h/2+block_h/4]) cube([10,11,block_h/2+0.2],center=true);
+		// Idler Axis Cutout
+		hull(){
+			translate([15.5,-15.5,block_h/2]) cylinder(r=4.5,h=block_h,$fn=100,center=true);
+			translate([15.5,-10,block_h/2]) cylinder(r=4.5,h=block_h,$fn=100,center=true);
+		}
 
-		translate([-2,22,block_h/2+(block_h/4)]) cube([4,20,7.2],center=true);
-		translate([-2,22,block_h/2-(block_h/4)]) cube([4,20,7.2],center=true);
-		
-		translate([-1,16.2,block_h/2+(block_h/4)]) rotate([0,90,0]) cylinder(h=100,r=m4_open_radius,$fn=50);
+		// Idler tensioner cutouts
+		translate([-2,22,block_h/2-(block_h/4)]) cube([4,30,7.4],center=true);
 		translate([-1,16.2,block_h/2-(block_h/4)]) rotate([0,90,0]) cylinder(h=100,r=m4_open_radius,$fn=50);
 
-//		translate([20,0,block_h/2]) cube([10,44,block_h+2],center=true);
-		translate([6.5,-13.5,gear_h+2]) rotate([90,0,0]) push_fit(clearance=1);
-		translate([0,0,gear_h]) drive_gear(clearance = 1);
-		hull(){
-//			translate([10,0,0]) cylinder(h=4,r=6,center=true,$fn=50);
-			cylinder(h=6,r=11.2,center=true,$fn=50);
-			translate([0,0,4]) cylinder(6,11.2,6.7,center=true,$fn=50);
-//			translate([10,0,4]) cylinder(4,6,5,center=true,$fn=50);
-		}
+		// Push fit cutout
+		translate([6.5,-21,gear_h+2]) rotate([90,0,0]) cylinder(25,9.7/2,10.4/2,$fn=50);
 
-		// drive gear & bearing cutout
-		hull(){
-			translate([14,0,gear_h+2]) cylinder(h=block_h+10,r=8,center=true);
-			cylinder(h=100,r=6.7,center=true,$fn=50);
-		}
-	
+		// Drive cutout
+        translate([0,0,gear_h]) drive_gear(clearance = 1);
+		cylinder(h=12.1,r=11.4,center=true,$fn=100);
+		translate([0,0,7]) cylinder(2.1,11.4,11,center=true,$fn=100);
+		translate([0,0,7]) cylinder(11,11,11,center=true,$fn=100);
 }
 
 module idler(){
 	difference(){
 		union(){
 			translate([17,0,block_h/2]) rotate([0,90,0]) hull(){
-				translate([(block_h/2-2),19,0]) cylinder(8,2,2,$fn=20);
-				translate([-(block_h/2-2),19,0]) cylinder(8,2,2,$fn=20);
-				translate([0,-15.5,4]) cube([block_h,7.6,8],center=true);
+				translate([(block_h/2-2),19,0]) cylinder(6,2,2,$fn=20);
+				translate([-(block_h/2-2)+10,19,0]) cylinder(6,2,2,$fn=20);
+				translate([-(block_h/2-2),7,0]) cylinder(6,2,2,$fn=20);
+				translate([0,-15.5,3]) cube([block_h,7.6,6],center=true);
 			}
 			hull(){
-				translate([15.5,-15.5,block_h/2+0.1]) cylinder(r=3.8,h=block_h-0.2,center=true,$fn=100);
+				translate([15.5,-15.5,block_h/2]) cylinder(r=3.8,h=block_h,center=true,$fn=100);
 				translate([20,-15.5,block_h/2+0.1]) cube([6,7.6,block_h-0.2],center=true);
 			}
 			hull(){
-				translate([21.5,0,gear_h+8]) cube([6,14,5],center=true);
+				translate([20,0,gear_h+8]) cube([6,14,5],center=true);
 				translate([14.5,0,gear_h+8]) cylinder(5,5.5,5.5,center=true,$fn=50);
 			}
 			hull(){
-				translate([21.5,0,gear_h-4]) cube([6,14,5],center=true);
+				translate([20,0,gear_h-4]) cube([6,14,5],center=true);
 				translate([14.5,0,gear_h-4]) cylinder(5,5.5,5.5,center=true,$fn=50);
 			}
 
@@ -114,15 +94,9 @@ module idler(){
 		translate([10,0,gear_h+2]) cube([7.6,14,block_h-2],center=true);
 
 		translate([15.5,-15.5,block_h/2]) cylinder(r=m3_open_radius,h=100,center=true,$fn=40);
-		translate([15.5,-15.5,block_h/4]) cylinder(r=5.2,h=block_h/2+0.1,center=true,$fn=80);
-		translate([18,-16.5,block_h/4]) cube([16,10,block_h/2+0.1],center=true);
 		hull(){
-			translate([-1,16.2,block_h/2+(block_h/4)]) rotate([0,90,0]) cylinder(h=100,r=m4_open_radius,$fn=50);
-			translate([-1,22,block_h/2+(block_h/4)]) rotate([0,90,0]) cylinder(h=100,r=m4_open_radius,$fn=50);
-		}
-		hull(){
-			translate([-1,16.2,block_h/2-(block_h/4)]) rotate([0,90,0]) cylinder(h=100,r=m4_open_radius,$fn=50);
-			translate([-1,22,block_h/2-(block_h/4)]) rotate([0,90,0]) cylinder(h=100,r=m4_open_radius,$fn=50);
+			translate([-1,15.5,block_h/2-(block_h/4)]) rotate([0,90,0]) cylinder(h=100,r=4.8/2,$fn=50);
+			translate([-1,22,block_h/2-(block_h/4)]) rotate([0,90,0]) cylinder(h=100,r=4.8/2,$fn=50);
 
 		}
 	}
@@ -137,9 +111,9 @@ module idler(){
 }
 
 module assembly(){
-	nema17();
+%	nema17();
 	translate([0,0,gear_h]) drive_gear(clearance = 0);
-%	translate([6.5,-13.1,gear_h+2]) rotate([90,0,0]) push_fit();
+%	translate([6.5,-23.1,gear_h+2]) rotate([90,0,0]) push_fit();
 	color("GreenYellow") block();
 	color("GreenYellow") idler();
 %	translate([14.5,0,gear_h+2]) bearing_624();
