@@ -6,7 +6,7 @@ include <configuration.scad>
 screw_spacing = 40;
 bearing_holder_height = 16;
 bearing_holder_width = 30;
-bearing_holder_depth = 8;
+bearing_holder_depth = 15;
 
 module tensioner_mount(){
 	difference(){
@@ -47,8 +47,8 @@ module tensioner_bearing(){
 			translate([-(bearing_holder_depth/2+0.01),0,0]) rotate([0,90,0]) cylinder(0.5,7,6,$fn=60);
 		}
 		rotate([0,90,0]) cylinder(r=4,h=bearing_holder_depth+10,$fn=50,center=true);
-		translate([0,(screw_spacing/2),-(bearing_holder_height/2)-0.01]) cylinder(r=m4_nut_radius,h=2.5,$fn=6);
-		translate([0,-(screw_spacing/2),-(bearing_holder_height/2)-0.01]) cylinder(r=m4_nut_radius,h=2.5,$fn=6);
+		translate([0,(screw_spacing/2),-(bearing_holder_height/2)-0.01]) cylinder(r=m4_nut_radius,h=3,$fn=6);
+		translate([0,-(screw_spacing/2),-(bearing_holder_height/2)-0.01]) cylinder(r=m4_nut_radius,h=3,$fn=6);
 	}
 }
 
