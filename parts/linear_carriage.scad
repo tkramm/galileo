@@ -1,6 +1,6 @@
 include <configuration.scad>
 include <../components/bearing_608.scad>
-spacing = 40;
+spacing = 40.2;
 bearing_height = 30;
 screw_hole = 8.1;
 
