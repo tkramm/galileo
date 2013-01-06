@@ -11,14 +11,14 @@ screwspacing = 14.9;
 
 //J-Head
 //hotend_diameter = 15.7;
-hotend_diameter = 16.2;
+hotend_diameter = 16.4;
 
 module effector(){
 	difference() {
 	  union() {
 		translate([0,0,-height/2]) cylinder(h=25,r=hotend_diameter/2+4,$fn=200);
-        translate([16,-10,15-height/2]) cube([6, 6, 30], center=true);
-        translate([-16,-10,15-height/2]) cube([6, 6, 30], center=true);
+        translate([16,-10,14-height/2]) cube([7, 6, 18], center=true);
+        translate([-16,-10,14-height/2]) cube([7, 6, 18], center=true);
 		hull(){
 	    for (a = [0:120:359]) rotate([0, 0, a]) 
     		  translate([0, 22, 0])
@@ -46,8 +46,8 @@ module effector(){
 		translate([0,0,-height/2+8.98]) cylinder(h=18,r=hotend_diameter/2,$fn=100);
 
 		// Screws
-		translate([16,0,27-height/2]) rotate([90, 0, 0]) cylinder(h=50,r=m3_radius,$fn=30, center=true);
-		translate([-16,0,27-height/2]) rotate([90, 0, 0]) cylinder(h=50,r=m3_radius,$fn=30, center=true);
+		translate([16,0,20-height/2]) rotate([90, 0, 0]) cylinder(h=50,r=m3_radius,$fn=30, center=true);
+		translate([-16,0,20-height/2]) rotate([90, 0, 0]) cylinder(h=50,r=m3_radius,$fn=30, center=true);
 
 		translate([screwspacing/2,0,16-height/2]) rotate([90, 0, 0]) cylinder(h=50,r=m3_radius,$fn=30, center=true);
 		translate([-screwspacing/2,0,16-height/2]) rotate([90, 0, 0]) cylinder(h=50,r=m3_radius,$fn=30, center=true);
@@ -65,7 +65,7 @@ module effector(){
     		translate([0, radius, 0]) rotate([0, 90, 0])
 	      cylinder(r=1.5, h=separation+1, center=true, $fn=12);
     		translate([0, radius, 0]) rotate([90, 0, 90])
-	      cylinder(r=m3_nut_radius, h=separation-12, center=true, $fn=6);
+	      cylinder(r=m3_nut_radius+0.1, h=separation-12, center=true, $fn=6);
 	  }
 
 	}
