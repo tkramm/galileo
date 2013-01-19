@@ -4,7 +4,9 @@ height = 6;
 screwspacing = 21.3;
 
 //J-Head
-hotend_diameter = 15.7;
+//hotend_diameter = 15.7;
+hotend_diameter = 16;
+
 module hotend_adapter(){
 	difference(){
 		union(){
