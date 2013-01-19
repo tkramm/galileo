@@ -14,6 +14,10 @@ m4_major = 3.85;
 m4_radius = m4_major/2;
 m4_open_radius = 4.3/2;
 
+m5_major = 4.85;
+m5_radius = m5_major/2;
+m5_open_radius = 5.3/2;
+
 m8_major = 7.85;
 m8_radius = m8_major/2;
 m8_open_radius = 8.3/2;
