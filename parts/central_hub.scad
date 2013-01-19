@@ -30,14 +30,13 @@ module cutouts(l=61){
 	}
 
 	// holes for mounting the beam
-	translate([0,0,-50])cylinder(100,1,1,$fn=20);
 	for(i = [0,120,240]){	
 		 rotate([0,0,i]) translate([25,0,-50])cylinder(100,m4_open_radius,m4_open_radius,$fn=20);
 		 rotate([0,0,i]) translate([60,0,-50])cylinder(100,m4_open_radius,m4_open_radius,$fn=20);
 	}
 
 	// centerhole for measuring or whatever
-	translate([0,0,-50]) cylinder(100,1,1,$fn=20);
+//	translate([0,0,-50]) cylinder(100,0,0,$fn=20);
 }
 
 //combine everything
