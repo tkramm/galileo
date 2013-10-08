@@ -1,4 +1,4 @@
-include <./configuration.scad>
+include <configuration.scad>
 include <../components/2040.scad>
 include <../components/nema23.scad>
 include <../components/drive_gear_steel.scad>
@@ -143,7 +143,7 @@ module assembly(bearing=0){
 %	translate([14.5,0,gear_h+2]) bearing_624();
 	nema23();
 }
-
+//block();
 assembly(bearing=0);
 //rotate([0,90,0]) idler();
 //rotate([0,0,0]) block_fan(bearing=0);
