@@ -50,6 +50,8 @@ module carriage(){
 				translate([0,0,plate_height+3.5]) rotate([90,0,0])cylinder(h=60,r=3.1/2,$fn=20,center=true);
 			}
 			hull(){
+				translate([50,0,0]) cylinder(h=6,r=10/2,$fn=40);
+				translate([30,0,0]) cylinder(h=6,r=10/2,$fn=40);
 				translate([10,0,0]) cylinder(h=6,r=10/2,$fn=40);
 				translate([-10,0,0]) cylinder(h=6,r=10/2,$fn=40);
 			}
@@ -60,15 +62,21 @@ module carriage(){
 
 		translate([-25,-15,plate_height])cube([50,30,20]);
 
+		translate([50,0,-1]) cylinder(h=10,r=6.1/2,$fn=40);
+		translate([30,0,-1]) cylinder(h=10,r=6.1/2,$fn=40);
 		translate([10,0,-1]) cylinder(h=10,r=6.1/2,$fn=40);
 		translate([-10,0,-1]) cylinder(h=10,r=6.1/2,$fn=40);
 		translate([15,-7,plate_height/2])rotate([0,-90,0])cylinder(h=30,r=2.8/2,$fn=30);
 	}
 	difference(){
 		union(){
+			translate([50,0,0]) cylinder(h=6,r=11/2,$fn=40);
+			translate([30,0,0]) cylinder(h=6,r=11/2,$fn=40);
 			translate([10,0,0]) cylinder(h=6,r=11/2,$fn=40);
 			translate([-10,0,0]) cylinder(h=6,r=11/2,$fn=40);
 		}
+		translate([50,0,-1]) cylinder(h=10,r=6.1/2,$fn=40);
+		translate([30,0,-1]) cylinder(h=10,r=6.1/2,$fn=40);
 		translate([10,0,-1]) cylinder(h=10,r=6.1/2,$fn=40);
 		translate([-10,0,-1]) cylinder(h=10,r=6.1/2,$fn=40);
 		translate([-150,-7,plate_height/2])rotate([0,-90,0])cylinder(h=30,r=2.8/2,$fn=30);
@@ -80,6 +88,7 @@ module assembly(){
 	translate([0,0,-0.5]){
 		igus_slide();
 		igus_slider();
+		translate([40,0,0]) igus_slider();
 	}
 	belt();
 }
