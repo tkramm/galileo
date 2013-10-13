@@ -58,13 +58,16 @@ module tensioner(mount_color="Red",bearing_color="Red"){
 	
 	translate([0,(screw_spacing/2),14]) m4x60_hex();
 	translate([0,-(screw_spacing/2),14]) m4x60_hex();
-	translate([0,0,-35]) rotate([0,90,0]) bearing_608();
+	translate([3.5,0,-35]) rotate([0,90,0]) bearing_608();
+	translate([-3.5,0,-35]) rotate([0,90,0]) bearing_608();
 }
 
 module tensioner_w_bar(color="Red"){
 	tensioner(color=color);
 	color("Silver") rotate([0,90,0]) beam(h=100);
 }
-//tensioner_w_bar();
+tensioner_w_bar();
 
-rotate([180,0,0]) tensioner_bearing();
+//rotate([180,0,0]) tensioner_bearing();
+
+//rotate([180,0,0]) tensioner_mount();
